@@ -24,11 +24,6 @@ public class PlayerIdleState : PlayerState
         if (xInput != 0 || yInput != 0 && !player.isBusy)
             player.stateMachine.ChangeState(player.moveState);
 
-        /* if (Input.GetKeyDown(KeyCode.W) && !player.isBusy)
-             player.stateMachine.ChangeState(player.moveState);*/
-
-
-
     }
 
 }

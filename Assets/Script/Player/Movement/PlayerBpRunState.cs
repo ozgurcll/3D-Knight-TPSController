@@ -21,7 +21,7 @@ public class PlayerBpRunState : PlayerState
     {
         base.Update();
 
-        Movement();
+        Movement_Dodge_Dash(3f);
 
         if (xInput == 0 && yInput == 0)
             player.stateMachine.ChangeState(player.battlePoseState);

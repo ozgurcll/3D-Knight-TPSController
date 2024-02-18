@@ -20,7 +20,7 @@ public class PlayerRunState : PlayerState
     public override void Update()
     {
         base.Update();
-        Movement();
+        Movement_Dodge_Dash(3f);
 
         if (xInput == 0 && yInput == 0)
             player.stateMachine.ChangeState(player.idleState);

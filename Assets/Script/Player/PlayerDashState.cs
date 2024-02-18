@@ -25,7 +25,7 @@ public class PlayerDashState : PlayerState
     {
         base.Update();
 
-        Ability(player.dashSpeed);
+        Movement_Dodge_Dash(player.dashSpeed);
 
         if (stateTimer < 0 && player.currentWeaponInHand == null)
             player.stateMachine.ChangeState(player.idleState);

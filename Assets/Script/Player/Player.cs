@@ -13,6 +13,14 @@ public class Player : Entity
     [HideInInspector] public bool isAttacking;
 
 
+    public bool isGrounded;
+    public bool isInteracting;
+    public float inAirTimer;
+    public float leapingVelocity;
+    public float fallingVelocity;
+    public LayerMask groundLayer;
+
+
     #region  Camera System
 
     [Header("TPS Camera System")]
@@ -67,6 +75,7 @@ public class Player : Entity
     public PlayerRunState runState { get; private set; }
     public PlayerDashState dashState { get; private set; }
     public PlayerDodgeState dodgeState { get; private set; }
+    public PlayerLandState landState { get; private set; }
 
     public PlayerDrawSwordState drawSwordState { get; private set; }
     public PlayerSheathSwordState sheathSwordState { get; private set; }
@@ -93,6 +102,7 @@ public class Player : Entity
 
         dashState = new PlayerDashState(this, stateMachine, "Dash");
         dodgeState = new PlayerDodgeState(this, stateMachine, "Dodge");
+        landState = new PlayerLandState(this, stateMachine, "Land");
 
         drawSwordState = new PlayerDrawSwordState(this, stateMachine, "DrawSword");
         sheathSwordState = new PlayerSheathSwordState(this, stateMachine, "SheathSword");
@@ -124,6 +134,13 @@ public class Player : Entity
         base.Update();
         stateMachine.currentState.Update();
         CheckForInput();
+        CheckCollision();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!lockedTarget) TPSCamMouseInput(); else stateMachine.ChangeState(targetLockedState);
+
     }
 
     #region Camera System
@@ -259,6 +276,35 @@ public class Player : Entity
         }
     }
 
+    private void CheckCollision()
+    {
+        RaycastHit hit;
+        Vector3 rayCastOrigin = transform.position;
+        rayCastOrigin.y += .5f;
+        if (!isGrounded)
+        {
+            if (!isInteracting)
+                stateMachine.ChangeState(landState);
+
+            inAirTimer += Time.deltaTime;
+            rb.AddForce(transform.forward * leapingVelocity);
+            rb.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
+        }
+
+        if (Physics.SphereCast(rayCastOrigin, .2f, -Vector3.up, out hit, groundLayer))
+        {
+            if (!isGrounded && !isInteracting)
+            {
+                stateMachine.ChangeState(landState);
+            }
+            inAirTimer = 0;
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
     #region Weapon Equipment?
     public void DrawWeapon()
     {

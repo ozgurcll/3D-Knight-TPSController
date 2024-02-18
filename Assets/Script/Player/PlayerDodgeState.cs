@@ -23,12 +23,9 @@ public class PlayerDodgeState : PlayerState
 
         player.anim.SetFloat("XMove", xInput, 0.3f, Time.deltaTime);
         player.anim.SetFloat("YMove", yInput, 0.3f, Time.deltaTime);
-
-
-        Ability(.5f);
-
-
-
+        
+        Movement_Dodge_Dash(3);
+        
         if (triggerCalled)
         {
             if (player.currentWeaponInHand == null)

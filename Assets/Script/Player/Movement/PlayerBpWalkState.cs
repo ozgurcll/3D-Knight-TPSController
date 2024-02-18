@@ -20,7 +20,7 @@ public class PlayerBpWalkState : PlayerState
     public override void Update()
     {
         base.Update();
-        Movement();
+        Movement_Dodge_Dash(1.5f);
 
 
         if (xInput == 0 && yInput == 0)
