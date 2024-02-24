@@ -17,7 +17,7 @@ public class DamageDealer : MonoBehaviour
         hasDealtDamage = new List<GameObject>();
     }
 
-    public void CanAttack()
+    public void CanAttackPlayer()
     {
         if (canDealDamage)
         {
@@ -31,6 +31,27 @@ public class DamageDealer : MonoBehaviour
                     cameraShake.ShakeCamera(2f, .2f);
                     enemy.stats.TakeDamage(10);
                     enemy.fx.HitVFX(hit.point);
+                    hasDealtDamage.Add(hit.transform.gameObject);
+                }
+            }
+        }
+    }
+
+    public void CanAttackEnemy()
+    {
+        if (canDealDamage)
+        {
+            RaycastHit hit;
+
+            int layerMask = 1 << 9;
+            if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength, layerMask))
+            {
+                if (hit.transform.TryGetComponent(out Player player) && !hasDealtDamage.Contains(hit.transform.gameObject))
+                {
+                  //  Debug.Log("Hit Player");
+                    cameraShake.ShakeCamera(2f, .2f);
+                    player.stats.TakeDamage(10);
+                    player.fx.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
             }

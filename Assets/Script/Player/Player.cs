@@ -335,7 +335,7 @@ public class Player : Entity
     public void CanAttack()
     {
         if (currentWeaponInHand != null)
-            currentWeaponInHand.GetComponentInChildren<DamageDealer>().CanAttack();
+            currentWeaponInHand.GetComponentInChildren<DamageDealer>().CanAttackPlayer();
     }
     #endregion
     public override void Die()
