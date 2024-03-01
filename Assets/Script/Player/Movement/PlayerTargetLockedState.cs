@@ -20,7 +20,7 @@ public class PlayerTargetLockedState : PlayerState
     {
         base.Update();
         player.LookAtTarget();
-        Movement_Dodge_Dash(1.5f);
+        Movement_Dodge_Dash(3f);
 
         if (!player.lockedTarget && player.currentWeaponInHand == null)
             player.stateMachine.ChangeState(player.idleState);

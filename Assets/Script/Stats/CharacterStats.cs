@@ -19,49 +19,9 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-   /* public virtual void DoDamage(CharacterStats _targetStats)
-    {
-        if (TargetCanAvoidAttack(_targetStats))
-            return;
-
-        int totalDamage = damage.GetValue() + strength.GetValue();
-
-        if (CanCrit())
-        {
-            totalDamage = CalculateCriticalDamage(totalDamage);
-        }
-
-
-
-        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
-        _targetStats.TakeDamage(totalDamage);
-
-
-        //if invnteroy current weapon has fire effect
-        // then DoMagicalDamage(_targetStats);
-
-    }
-
-    /*private bool TargetCanAvoidAttack(CharacterStats _targetStats)
-    {
-        int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
-
-        if (isShocked)
-            totalEvasion += 20;
-
-        if (Random.Range(0, 100) < totalEvasion)
-        {
-            return true;
-        }
-
-        return false;
-    }*/
-
-
     public virtual void TakeDamage(int _damage)
     {
         DecreaseHealthBy(_damage);
-Debug.Log(_damage);
         if (currentHealth <= 0 && !isDead)
             Die();
     }

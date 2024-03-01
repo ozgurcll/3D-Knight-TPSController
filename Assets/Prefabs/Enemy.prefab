@@ -1293,6 +1293,7 @@ GameObject:
   - component: {fileID: 5539280047001788375}
   - component: {fileID: 5539280047001788372}
   - component: {fileID: 5539280047001788392}
+  - component: {fileID: 919132149028499866}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -1351,17 +1352,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossState: 0
-  weaponHolder: {fileID: 0}
-  weapon: {fileID: 0}
+  weaponHolder: {fileID: 8271286064002790232}
+  weapon: {fileID: 3418011884731919454, guid: 29b475577bd142043a2ccad80f84455f, type: 3}
   currentWeaponInHand: {fileID: 0}
   playerTarget: {fileID: 0}
-  walkPoints: []
+  walkPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   nextDestination: {x: 0, y: 0, z: 0}
   turnSpeed: 5
   patrolTime: 10
   walkDistance: 8
   currentAttackTime: 0
-  attackDistance: 2
+  attackDistance: 1.6
   attackRate: 1
   agent: {fileID: 0}
   index: 0
@@ -1374,8 +1378,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4620147908709998675}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 9ed2c23655f4c4deb84cae16d7eceabc, type: 3}
+  m_Controller: {fileID: 9100000, guid: 442f6356da1a745dfa7fdea0a7d6d4ed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1428,6 +1432,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitTarget: {fileID: 19886758, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
+--- !u!195 &919132149028499866
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620147908709998675}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4805647716775982199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,14 +2298,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8271286064002790232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.061, y: 0.097, z: 0.031}
+  m_LocalScale: {x: 0.9999999, y: 0.9999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6154966109495403210}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &8358338947697509087
 GameObject:
   m_ObjectHideFlags: 0

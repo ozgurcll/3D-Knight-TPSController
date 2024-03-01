@@ -43,15 +43,7 @@ public class Entity : MonoBehaviour
 
         rb.velocity = new Vector3(0, 0, 0);
     }
-
-    public void SetVelocity(float _xVelocity, float _zVelocity)
-    {
-        if (isKnocked)
-            return;
-
-        rb.velocity = new Vector3(_xVelocity, rb.velocity.y, _zVelocity);
-    }
-
+    
     public virtual void Die()
     {
         Destroy(this.gameObject, 2.5f);

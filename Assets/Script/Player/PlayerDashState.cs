@@ -18,7 +18,6 @@ public class PlayerDashState : PlayerState
     {
         base.Exit();
         player.trailVFX.SetActive(false);
-        player.SetVelocity(0, rb.velocity.y);
         player.isDashing = false;
     }
     public override void Update()

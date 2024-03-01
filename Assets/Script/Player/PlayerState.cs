@@ -62,8 +62,11 @@ public class PlayerState
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, .1f);
+
             player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            player.transform.position += direction * _speed * Time.deltaTime;
+            Vector3 movement = direction * _speed;
+            rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+
             player.anim.SetFloat("XMove", xInput, 0.1f, Time.deltaTime);
             player.anim.SetFloat("YMove", yInput, 0.1f, Time.deltaTime);
         }
